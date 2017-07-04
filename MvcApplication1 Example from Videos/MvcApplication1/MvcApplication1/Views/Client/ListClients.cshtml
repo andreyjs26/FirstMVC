@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MvcApplication1.Models.Client>
+
+@{
+    ViewBag.Title = "ListClients";
+    Layout = "~/Views/Shared/_LayoutWithSidebar.cshtml";
+}
+
+@section Featured{
+    <section class="featured">
+    <div class="content-wrapper">This is the text that will be show in the featured text called from the view using rendering from _ViewStart.cshtml    </div>
+    </section>
+ }
+
+@section Scripts
+{
+ <!--Code from the script using rendering from _ViewStart.cshtml-->   
+ }
+
+@section Sidebar
+{
+    <h3>This is my sidebar</h3>
+    }
+
+<h2>ListClients</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            @Html.Partial("_ClientSalary",item)
+
+        </td>
+
+    </tr>
+}
+
+</table>

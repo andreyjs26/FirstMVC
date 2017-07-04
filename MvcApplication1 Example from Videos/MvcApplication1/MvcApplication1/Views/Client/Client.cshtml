@@ -1,0 +1,43 @@
+﻿@model MvcApplication1.Models.Client
+@{
+    //ViewBag.Title = "Client";
+
+    //var client = (MvcApplication1.Models.Client)ViewData["Client"];
+    //var client = ViewBag.Client;
+    var client = Model;
+}
+
+
+<div class="Title">
+            <h3>Client: @client.Name</h3>
+
+</div>
+<br />
+    <div class="Details">
+
+    <p>Id: @client.Id</p>
+    <p>BirthDate: @client.Date</p>
+    <p>Salary:
+        @if (client.Salary < 1000)
+        {
+            @:**Low Salary**    
+           @*TEXT*@
+        }
+        else
+        { 
+       <span>@client.Salary</span> 
+        }
+      </p>   
+
+        <p>
+
+            @if(TempData["message"] != null)
+            {
+            <span>@TempData["message"]  </span>
+            }
+
+
+        </p>
+    
+
+    </div>
